@@ -2,3 +2,8 @@
 global using Microsoft.EntityFrameworkCore.ChangeTracking;
 global using FluentValidation.Results;
 global using System.Linq.Expressions;
+global using ShortUrl.Domain.Entities;
+global using ShortUrl.Application.DataModels.ApplicationDataModel;
+global using FluentValidation;
+global using Microsoft.Extensions.DependencyInjection;
+global using System.Reflection;

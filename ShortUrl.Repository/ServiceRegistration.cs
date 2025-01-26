@@ -7,9 +7,9 @@ namespace ShortUrl.Repository
         {
            
 
-            services.AddDbContextPool<ShortUrlDbContext>((sp, options) =>
+            services.AddDbContext<ShortUrlDbContext>((sp, options) =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("ShortUrlConnection"));
+                options.UseSqlServer(configuration.GetConnectionString("ShortenUrlConnection"));
                 options.EnableSensitiveDataLogging(true);
             });
 
@@ -20,8 +20,8 @@ namespace ShortUrl.Repository
         {
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IUnitOfWork>(c => { return c.GetRequiredService<ShortUrlDbContext>(); });
+            services.AddScoped<IUrlShortenerRepository, UrlShortenerRepository>();
             
-
             return services;
         }
     }

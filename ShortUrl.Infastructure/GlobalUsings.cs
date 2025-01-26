@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ShortUrl.Infastructure
-{
-    internal class GlobalUsings
-    {
-    }
-}
+﻿global using ShortUrl.Application.Interfaces.Services;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using ShortUrl.Infastructure.Services;
+global using FluentValidation;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.Caching.Distributed;
+global using Microsoft.Extensions.Caching.Memory;
+global using Microsoft.Extensions.Logging;
+global using ShortUrl.Application.DataModels.ApplicationDataModel;
+global using ShortUrl.Application.HelperMethods;
+global using ShortUrl.Application.Interfaces;
+global using ShortUrl.Application.Interfaces.Repositories;
+global using ShortUrl.Domain.Entities;
