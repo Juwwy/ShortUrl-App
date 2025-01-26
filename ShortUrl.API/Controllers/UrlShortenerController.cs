@@ -1,5 +1,4 @@
 ﻿
-
 namespace ShortUrl.API.Controllers
 {
     /// <summary>

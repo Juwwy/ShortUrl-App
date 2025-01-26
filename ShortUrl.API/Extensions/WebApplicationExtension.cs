@@ -1,6 +1,8 @@
 ﻿
 
 
+using Microsoft.OpenApi.Models;
+
 namespace ShortUrl.API.Extensions
 {
     public static class WebApplicationExtension
@@ -28,6 +30,22 @@ namespace ShortUrl.API.Extensions
                 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
                 builder.Services.AddEndpointsApiExplorer();
                 builder.Services.AddSwaggerGen(c => c.ResolveConflictingActions(apides => apides.First()));
+                builder.Services.AddSwaggerGen(c =>
+                {
+
+                    c.SwaggerDoc("v1", new OpenApiInfo
+                    {
+                        Version = "v1",
+                        Title = "URL Shortener API",
+                        License = new OpenApiLicense
+                        {
+                            Name = "MIT License",
+                            Url = new Uri("https://opensource.org/licenses/MIT")
+                        }
+                    });
+                    
+
+                });
 
                 #endregion
 
@@ -35,14 +53,6 @@ namespace ShortUrl.API.Extensions
 
                 builder.Services.AddControllers();
                 builder.Services.AddMemoryCache();
-                //builder.Services.AddStackExchangeRedisCache(redisOptions =>
-                //{
-                //    string connection = builder.Configuration
-                //    .GetConnectionString("Redis");
-
-                //    redisOptions.Configuration = connection;
-                //});
-                // builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(new ConfigurationOptions { EndPoints = { "localhost:6379" }, AbortOnConnectFail = false, ConnectRetry = 5 , ConnectTimeout = 5000}));
                 builder.Services.AddInfrastructureServices(builder.Configuration);
                 builder.Services.AddApplicationServices();
                 builder.Services.AddRepositoryServices(builder.Configuration);

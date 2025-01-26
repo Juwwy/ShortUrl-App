@@ -81,17 +81,17 @@ namespace ShortUrl.Infastructure.Services
                 if (existingShortUrl != null)
                     return ResponseModel<string>.SuccessMessage("success", existingShortUrl.ShortUrl);
 
-                var newShortUrl = $"{GenerateShortUrlHelper.GenerateShortUrl(5)}.ly";
+                var newShortUrl = $"{HelperMethods.GenerateShortUrl(5)}.ly";
 
                 while (await urlShortenerRepository.FindAll().AnyAsync(x => string.Equals(newShortUrl, x.ShortUrl)))
                 {
-                    newShortUrl = $"{GenerateShortUrlHelper.GenerateShortUrl(5)}.ly";
+                    newShortUrl = $"{HelperMethods.GenerateShortUrl(5)}.ly";
                 }
 
 
                 var urlShortener = new UrlShortener
                 {
-                    LongUrl = shorten.LongUrl,
+                    LongUrl = shorten.LongUrl.RemoveWhiteSpaces(),
                     ShortUrl = newShortUrl
                 };
 
