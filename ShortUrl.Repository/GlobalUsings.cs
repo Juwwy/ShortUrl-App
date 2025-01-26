@@ -1,0 +1,10 @@
+﻿global using Microsoft.EntityFrameworkCore;
+global using ShortUrl.Application.Interfaces.Repositories;
+global using ShortUrl.Repository.Database;
+global using System.Linq.Expressions;
+global using ShortUrl.Application.Interfaces;
+global using ShortUrl.Domain.Commons;
+global using System.Reflection;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using ShortUrl.Repository.Repositories;
